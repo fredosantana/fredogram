@@ -59,3 +59,6 @@ gem 'sprockets', '2.11.0'
 
 #Simpleform
 gem 'simple_form'
+
+#Devise
+gem 'devise'

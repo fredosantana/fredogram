@@ -66,3 +66,9 @@ gem 'devise'
 
 #Carrierwave
 gem 'carrierwave'
+
+#Figaro
+gem 'figaro'
+
+#Fog
+gem 'fog', '~> 1.3.1'

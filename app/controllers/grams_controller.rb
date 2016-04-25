@@ -1,11 +1,20 @@
 class GramsController < ApplicationController
 	def new
 		@gram = Gram.new
+		if @gram.valid?
+			redirect_to root_path
+		else
+			render :new, status: :unprocesable_entity
+		end
 	end
 
 	def create
 		@gram = Gram.create(gram_params)
-		redirect_to root_path
+		if @gram.valid?
+			redirect_to root_path
+		else
+			render :new, status: :unprocessable_entity
+		end
 	end
 
 	def index

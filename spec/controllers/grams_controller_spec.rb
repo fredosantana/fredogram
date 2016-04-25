@@ -9,11 +9,11 @@ RSpec.describe GramsController, type: :controller do
 	end
 
 	describe "grams#new action" do
-		it "should sucessfully show the new form" do
-			get :new
-			expect(response).to have_http_status(:success)
-		end
-	end
+		it "should successfully show the new form" do
+      		get :new
+      		expect(response).to have_http_status(:success)
+    	end
+  	end
 
 	describe "grams#create action" do
 		it "should successfully create a new gram in our database" do
@@ -22,6 +22,12 @@ RSpec.describe GramsController, type: :controller do
 
 			gram = Gram.last
 			expect(gram.message).to eq("Hello!")
+		end
+
+		it "should properly deal with validation errors" do
+			post :create, gram: {message: '' }
+			expect(response).to have_http_status(:unprocessable_entity)
+			expect(Gram.count).to eq 0
 		end
 	end
 end
